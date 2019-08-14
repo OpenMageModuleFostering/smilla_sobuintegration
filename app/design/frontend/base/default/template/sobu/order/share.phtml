@@ -7,7 +7,7 @@
 
 <form name="publish" method="POST" action="<?php echo $this->__('https://www.sobu.ch/publish') ?>">
     <input type="hidden" name="apiKey" value="<?php echo $this->getApiKey() ?>"/>
-    <input type="hidden" name="order" value="<?php echo htmlspecialchars($orderdata = $this->getOrderData()) ?>"/>
+    <input type="hidden" name="order" value='<?php echo $orderdata = $this->getOrderData() ?>'/>
     <input type="hidden" name="signature" value="<?php echo $this->getSignatureData($orderdata) ?>"/>
 </form>
 

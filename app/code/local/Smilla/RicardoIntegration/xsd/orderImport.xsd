@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" version="1.0">
+
+	<xs:element name="orders" type="orderOptions" />
+
+	<xs:complexType name="orderOptions">
+		<xs:all>
+			<xs:element minOccurs="0" name="orderStatus" type="orderStatusDto"/>
+			<xs:element minOccurs="0" name="orderReturn" type="orderReturnDto"/>
+			<xs:element minOccurs="0" name="orderCancel" type="orderCancelDto"/>
+			<xs:element minOccurs="0" name="order" type="orderDto"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="orderCancelDto">
+		<xs:all>
+			<xs:element minOccurs="0" name="cancelledReason" type="cancelReason"/>
+			<xs:element minOccurs="0" name="entries">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="entry" type="orderCancelEntryDto"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element minOccurs="0" name="merchantNotes" type="xs:string"/>
+			<xs:element minOccurs="1" name="orderNumber" type="xs:string"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="orderCancelEntryDto">
+		<xs:all>
+			<xs:element minOccurs="1" name="quantity" type="xs:positiveInteger"/>
+			<xs:element minOccurs="1" name="refNumber" type="xs:string"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="orderDto">
+		<xs:all>
+			<xs:element minOccurs="1" maxOccurs="1" name="customerId" type="xs:string"/>
+			<xs:element minOccurs="1" maxOccurs="1" name="customerLanguage" type="xs:string"/>
+			<xs:element minOccurs="0" maxOccurs="1" name="paymentOrderNumber" type="xs:string"/>
+			<xs:element minOccurs="1" maxOccurs="1" name="orderNumber" type="xs:string"/>
+			<xs:element minOccurs="0" maxOccurs="1" name="orderStatus" type="orderStatus"/>
+			<xs:element minOccurs="1" maxOccurs="1" name="orderType" type="orderType"/>
+			<xs:element minOccurs="0" maxOccurs="1" name="merchantOrderNumber" type="xs:string"/>
+			<xs:element minOccurs="0" maxOccurs="1" name="deliveryStatus" type="deliveryStatus"/>
+			<xs:element minOccurs="1" maxOccurs="1" name="totalPrice" type="currencyValueDto"/>
+			<xs:element minOccurs="1" maxOccurs="1" name="deliveryCosts" type="currencyValueDto"/>
+			<xs:element minOccurs="0" maxOccurs="1" name="paymentAddress" type="addressDto"/>
+			<xs:element minOccurs="0" maxOccurs="1" name="deliveryAddress" type="addressDto"/>
+			<xs:element minOccurs="1" maxOccurs="1" name="entries">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="1" name="entry" type="orderEntryDto"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element minOccurs="1" maxOccurs="1" name="creationDate" type="xs:dateTime"/>
+			<xs:element minOccurs="1" maxOccurs="1" name="modificationDate" type="xs:dateTime"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="currencyValueDto">
+		<xs:simpleContent>
+			<xs:extension base="positiveDouble">
+				<xs:attribute name="currency" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="addressDto">
+		<xs:all>
+			<xs:element minOccurs="1" name="title" type="xs:string"/>
+			<xs:element minOccurs="1" name="firstName" type="xs:string"/>
+			<xs:element minOccurs="1" name="lastName" type="xs:string"/>
+			<xs:element minOccurs="1" name="streetName" type="xs:string"/>
+			<xs:element minOccurs="1" name="streetNumber" type="xs:string"/>
+			<xs:element minOccurs="1" name="zip" type="xs:string"/>
+			<xs:element minOccurs="1" name="city" type="xs:string"/>
+			<xs:element minOccurs="1" name="country" type="xs:string"/>
+			<xs:element minOccurs="0" name="company" type="xs:string"/>
+			<xs:element minOccurs="0" name="pobox" type="xs:string"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="orderEntryDto">
+		<xs:all>
+			<xs:element minOccurs="1" name="refNumber" type="xs:string"/>
+			<xs:element minOccurs="1" name="productCode" type="xs:string"/>
+			<xs:element minOccurs="1" name="entryNumber" type="xs:int"/>
+			<xs:element minOccurs="1" name="name" type="xs:string"/>
+			<xs:element minOccurs="1" name="quantity" type="xs:positiveInteger"/>
+			<xs:element minOccurs="1" name="totalPrice" type="currencyValueDto"/>
+			<xs:element minOccurs="0" name="commissioningFee" type="positiveDouble"/>
+			<xs:element minOccurs="0" name="options">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="option" type="orderOptionDto"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="orderOptionDto">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="name" type="keyValueDto"/>
+			<xs:element minOccurs="0" name="value" type="keyValueDto"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="keyValueDto">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="key" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="orderStatusDto">
+		<xs:all>
+			<xs:element minOccurs="0" name="cancelledReason" type="cancelReason"/>
+			<xs:element minOccurs="0" name="delayedInfo" type="delayInfo"/>
+			<xs:element minOccurs="0" name="merchantNotes" type="xs:string"/>
+			<xs:element minOccurs="1" name="orderNumber" type="xs:string"/>
+			<xs:element minOccurs="1" name="orderStatus" type="orderStatus"/>
+			<xs:element minOccurs="0" name="paymentStatus" type="paymentStatus"/>
+			<xs:element minOccurs="0" name="shippingStatus" type="deliveryStatus"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="orderReturnDto">
+		<xs:all>
+			<xs:element minOccurs="1" name="deliveryCosts" type="positiveDouble"/>
+			<xs:element minOccurs="1" name="entries">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="entry" type="orderReturnEntryDto"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element minOccurs="0" name="merchantNotes" type="xs:string"/>
+			<xs:element minOccurs="1" name="orderNumber" type="xs:string"/>
+			<xs:element minOccurs="0" name="returnNumber" type="xs:string"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="orderReturnEntryDto">
+		<xs:all>
+			<xs:element minOccurs="1" name="quantity" type="xs:positiveInteger"/>
+			<xs:element minOccurs="1" name="refNumber" type="xs:string"/>
+			<xs:element minOccurs="0" name="totalPrice" type="xs:double"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:simpleType name="statusDto">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="INFO"/>
+			<xs:enumeration value="WARN"/>
+			<xs:enumeration value="ERROR"/>
+			<xs:enumeration value="FATAL"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="orderStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OPEN"/>
+			<xs:enumeration value="IN_PROGRESS"/>
+			<xs:enumeration value="COMPLETED"/>
+			<xs:enumeration value="DELAYED"/>
+			<xs:enumeration value="CANCELLED"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="orderType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MERCHANT_ORDER"/>
+			<xs:enumeration value="CUSTOMER_RETURN_ORDER"/>
+			<xs:enumeration value="CANCEL_ORDER"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="deliveryStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NOT_SHIPPED"/>
+			<xs:enumeration value="SHIPPED"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="cancelReason">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="no_longer_available"/>
+			<xs:enumeration value="not_published"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="delayInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="d1"/>
+			<xs:enumeration value="d2"/>
+			<xs:enumeration value="d3"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="paymentStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NOT_PAID"/>
+			<xs:enumeration value="PAID"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="positiveDouble">
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

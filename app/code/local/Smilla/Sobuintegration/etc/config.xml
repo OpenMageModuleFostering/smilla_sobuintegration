@@ -68,6 +68,14 @@
             </sobuintegration>
         </helpers>
         <events>
+            <salesrule_rule_condition_combine>
+                <observers>
+                    <add_condition_to_sales_rule>
+                        <class>Smilla_Sobuintegration_Model_Observer</class>
+                        <method>addConditionToSalesRule</method>
+                    </add_condition_to_sales_rule>
+                </observers>
+            </salesrule_rule_condition_combine>
             <sales_order_place_after>
                 <observers>
                     <sobu_register_sale>
@@ -114,24 +122,6 @@
                 </sobuintegration>
             </modules>
         </translate>
-        <events>
-            <salesrule_rule_condition_combine>
-                <observers>
-                    <add_condition_to_sales_rule>
-                        <class>Smilla_Sobuintegration_Model_Observer</class>
-                        <method>addConditionToSalesRule</method>
-                    </add_condition_to_sales_rule>
-                </observers>
-            </salesrule_rule_condition_combine>
-            <sales_order_place_after>
-                <observers>
-                    <sobu_register_sale>
-                        <class>Smilla_Sobuintegration_Model_Observer</class>
-                        <method>registerSobuSale</method>
-                    </sobu_register_sale>
-                </observers>
-            </sales_order_place_after>
-        </events>
     </adminhtml>
 
 

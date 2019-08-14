@@ -129,8 +129,8 @@
                             <show_in_store>1</show_in_store>
                         </publickey>
                         <voucheramount translate="label">
-                            <label>Gutscheinwert</label>
-                            <comment>Gutscheinwert für geworbene Kunden (Bsp.: 5% oder 5 CHF)</comment>
+                            <label>Gutscheinwert (CHF)</label>
+                            <comment>Gutscheinwert für geworbene Kunden</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>100</sort_order>
                             <show_in_default>1</show_in_default>
@@ -146,15 +146,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </provision>
-                        <promotion_redirect translate="label">
-                            <label>Promotion Redirect Target (optional)</label>
-                            <comment>Redirect incoming Sobu Links to this Page. Example: product-123.html</comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>120</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </promotion_redirect>
                         <privatekey translate="label">
                             <label></label>
                             <frontend_type>hidden</frontend_type>
@@ -163,7 +154,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </privatekey>
-
                     </fields>
                 </settings>
 			</groups>
