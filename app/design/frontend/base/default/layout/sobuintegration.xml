@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout version="0.1.0">
+
+    <default>
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="sobuintegration">
+                <label>Was ist Sobu?</label>
+                <url>/sobu/share/info</url>
+                <title>Was ist Sobu?</title>
+            </action>
+        </reference>
+    </default>
+
     <sobu_share_order>
         <reference name="root">
             <action method="setTemplate">
@@ -10,6 +21,28 @@
             <block type="sobuintegration/share" name="sobu_share_order" template="sobu/order/share.phtml"></block>
         </reference>
     </sobu_share_order>
+
+    <sobu_share_info>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="sobuintegration/share" name="sobu_share_info" template="sobu/share/info.phtml"></block>
+        </reference>
+    </sobu_share_info>
+
+    <sobu_share_link>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="sobuintegration/share" name="sobu_share_link" template="sobu/share/link.phtml"></block>
+        </reference>
+    </sobu_share_link>
 
     <!-- Order View -->
     <sales_order_view>

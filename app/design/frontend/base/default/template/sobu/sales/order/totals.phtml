@@ -52,11 +52,21 @@
 <?php endforeach?>
     <tr>
         <td colspan="4">
-            <br>
-            <div style="padding: 0 10px">
-            <p><strong><?php echo $this->__('Mit sobu publizieren und profitieren') ?></strong><br>
-                <?php echo $this->__('Publizieren Sie jetzt Ihren Einkauf gratis mit Sobu und ihren sozialen Netzwerken und verdienen Sie Geld mit Freundschaftswerbung.') ?>
-                <a target="_blank" href="<?php echo $this->getUrl('sobu/share/order', array('order_id' => $this->getOrder()->getId()))?>"><?php echo $this->__('Einkauf publizieren!') ?></a></p>
-            </div>
+            <br><br>
+
+            <table width="805" height="100" border="0" bgcolor="#e8e4e0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td colspan="3" style="line-height: 1px" valign="top" width="805" height="15"><img src="<?php echo $this->getSkinUrl('images/sobu/banner_share_01.png') ?>" width="805" height="15" alt=""></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" style="line-height: 1px"  valign="top" width="180" height="85"><img src="<?php echo $this->getSkinUrl('images/sobu/banner_share_02.png') ?>" width="180" height="85" alt=""></td>
+                    <td style="font-size: 11px; line-height: 15px" height="75"><?php echo sprintf($this->__('Teilen Sie jetzt Ihren Einkauf auf Facebook, Twitter oder LinkedIn und schenken Sie Ihren Freunden einen Gutschein von <b>%s</b>. Als Dankeschön erhalten Sie <b>%s</b> Umsatzprovision auf die Einkäufe Ihrer Freunde!'), Mage::getStoreConfig('sobuintegration/settings/voucheramount'), Mage::getStoreConfig('sobuintegration/settings/provision').'%') ?> <a target="_blank" href="<?php echo $this->getUrl('sobu/share/order', array('order_id' => $this->getOrder()->getId()))?>"><?php echo $this->__('Meinen Einkauf empfehlen') ?></a></td>
+                    <td rowspan="2" style="line-height: 1px"  valign="top" width="285" height="85"><img src="<?php echo $this->getSkinUrl('images/sobu/banner_share_04_'.Mage::app()->getLocale()->getLocaleCode().'.png') ?>" width="285" height="85" alt=""></td>
+                </tr>
+                <tr>
+                    <td style="line-height: 1px"  valign="top" width="340" height="10"><img src="<?php echo $this->getSkinUrl('images/sobu/banner_share_05.png') ?>" width="340" height="10" alt=""></td>
+                </tr>
+            </table>
+
         </td>
     </tr>

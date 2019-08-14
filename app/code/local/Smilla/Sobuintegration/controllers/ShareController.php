@@ -31,20 +31,24 @@ class Smilla_Sobuintegration_ShareController extends Mage_Core_Controller_Front_
         if(strlen($voucherCode) > 0) {
 
             // Save Vouchercode to Session
-            Mage::getSingleton("checkout/session")->setData("sobu_vouchercode", $voucherCode);
+            Mage::getSingleton('core/session')->setSobuVoucherCode($voucherCode);
             // Save ClickId to Session
-            Mage::getSingleton("checkout/session")->setData("sobu_clickid", $this->getRequest()->getParam('sobuClickId'));
+            Mage::getSingleton('core/session')->setSobuClickId($this->getRequest()->getParam('sobuClickId'));
 
-            $this->session->addSuccess(
-                Mage::helper('sobuintegration')->__('Sobu Benefit was successfully applied')
-            );
-
+            $this->_redirect('sobu/share/link');
         } else {
-            $this->session->addError(
-                Mage::helper('sobuintegration')->__('Link not valid')
-            );
+            // Show Info Page
+            $this->loadLayout();
+            $this->renderLayout();
         }
-        $this->_redirect("/");
+
+    }
+
+    public function infoAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+
 
     }
 

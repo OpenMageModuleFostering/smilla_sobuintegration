@@ -9,7 +9,7 @@ class Smilla_Sobuintegration_Model_Condition_Benefit extends Mage_Rule_Model_Con
     public function loadAttributeOptions()
     {
         $attributes = array(
-            'sobu_code' => Mage::helper('sobuintegration')->__('Sobu Benefit Code')
+            'sobu_code' => Mage::helper('sobuintegration')->__('sobu Benefit Code')
         );
 
         $this->setAttributeOption($attributes);
@@ -55,7 +55,7 @@ class Smilla_Sobuintegration_Model_Condition_Benefit extends Mage_Rule_Model_Con
      */
     public function validate(Varien_Object $object)
     {
-        if($this->getAttribute() == 'sobu_code' && $this->getValue() == Mage::getSingleton("checkout/session")->getData("sobu_vouchercode")){
+        if($this->getAttribute() == 'sobu_code' && $this->getValue() == Mage::getSingleton('core/session')->getSobuVoucherCode()){
             return true;
         } else {
             return false;

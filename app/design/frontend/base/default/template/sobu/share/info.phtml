@@ -1,0 +1,19 @@
+<div class="std">
+    <p><img alt="" width="100%" src="<?php echo $this->getSkinUrl('images/sobu/infobanner_'.Mage::app()->getLocale()->getLocaleCode().'.png') ?>"></p>
+    <h1><?php echo $this->__('Was ist sobu?') ?></h1>
+    <p><?php echo sprintf($this->__('sobu ist eine Onlineshop-Plattform der Schweizerischen Post. Der Onlineservice baut auf dem Prinzip ´Kaufen, teilen und profitieren´ auf. Wer seinen Einkauf in Sozialen Netzwerken (Facebook, Linkedin oder Twitter) mit seinen Freunden teilt und Freunde zum Einkauf bei %s anregt, kann jetzt bares Geld verdienen!'), Mage::app()->getStore()->getGroup()->getName()) ?><br><br></p>
+    <p><iframe width="560" height="315" frameborder="0" src="<?php echo $this->__('//www.youtube.com/embed/gnmJ0B7lkkY')?>" style="display: block; margin-left: auto; margin-right: auto;"></iframe></p>
+    <p>&nbsp;</p>
+    <h3><?php echo sprintf($this->__('Profitieren Sie von %s Provision auf den Einkauf Ihrer Freunde'), Mage::getStoreConfig('sobuintegration/settings/provision').'%')?></h3>
+    <p><?php echo sprintf($this->__('Sie erhalten satte %s Provision auf den Kaufbetrag jedes Einkaufs, welchen Ihre Freunde aufgrund Ihrer Kaufempfehlung tätigen. Sie verdienen also regelmässig bares Geld, wenn Ihre Freunde bei %s einkaufen!'), Mage::getStoreConfig('sobuintegration/settings/provision').'%', Mage::app()->getStore()->getGroup()->getName()) ?> </p>
+    <h3><?php echo $this->__('In drei einfachen Schritten zu barem Geld') ?></h3>
+    <p><?php echo $this->__('So einfach geht`s:') ?>
+    <ul>
+        <li><?php echo $this->__('<strong>Kaufen:</strong> Nach einem Einkauf sehen Sie in diesem Shop den Hinweis, wie Sie die gekauften Produkte weiterempfehlen können. Registrieren Sie sich einmalig auf der sobu-Plattform.') ?></li>
+        <li><?php echo $this->__('<strong>Teilen:</strong> Veröffentlichen Sie die erworbenen Artikel in den sozialen Netzwerken.') ?></li>
+        <li><?php echo sprintf($this->__('<strong>profitieren:</strong> Sie erhalten nun automatisch %s Provision auf jeden Auftrag, welchen Sie Ihren Freunden aufgrund des publizierten Links tätigen. Den angehäuften Geldbetrag können Sie Ihrem sobu-Konto entnehmen.'), Mage::getStoreConfig('sobuintegration/settings/provision').'%') ?></li>
+    </ul>
+    <h3><?php echo sprintf($this->__('CHF %s Rabatt für jeden Ihrer Freunde!'), Mage::getStoreConfig('sobuintegration/settings/voucheramount')) ?></h3>
+    <p><?php echo sprintf($this->__('Und es wird noch besser! Jeder Ihrer Freunde profitert einmalig von CHF %s Rabatt, wenn er auf Ihren Empfehlungslink klickt und einen Einkauf tätigt. die CHF %s werden automatisch vom Kaufbetrag abgezogen. Der Rabatt von CHF %s kann nur einmal pro Person eingelöst werden.'), Mage::getStoreConfig('sobuintegration/settings/voucheramount'), Mage::getStoreConfig('sobuintegration/settings/voucheramount'), Mage::getStoreConfig('sobuintegration/settings/voucheramount')) ?></p>
+    <p><?php echo $this->__('Nun wünschen wir Ihnen viel Spass beim Onlineshopping - und beim Profitieren! Weitere Informationen zu sobu finden Sie auf <a target="_blank" href="http://www.sobu.ch">sobu.ch</a>') ?>.</p>
+</div>

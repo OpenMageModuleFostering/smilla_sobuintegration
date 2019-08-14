@@ -15,32 +15,37 @@ class Smilla_Sobuintegration_Helper_Data extends Mage_Core_Helper_Abstract
 
         // Items
         foreach($order->getItemsCollection() as $item){
-            $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
-            $itemarray = array(
-                "quantity" => (int) $item->getQtyOrdered(),
-                "product" => array(
-                    "id" => $product->getSku(),
-                    "editable" => true,
-                    "languageVersions" => array( ),
-                    "image" => $product->getImageUrl()
-                )
-            );
 
-            // Get all Labels from Store views
-            foreach($storeViews as $storeId => $store) {
-                $locale = substr(Mage::getStoreConfig('general/locale/code', $storeId), 0, 2);
-                Mage::app()->setCurrentStore($storeId);
+            if(!$item->getParentItem()){
+	            $product = Mage::getModel('catalog/product')->load(($item->getParentItem()) ? $item->getParentItem()->getProductId() : $item->getProductId());
 
-                $product = Mage::getModel('catalog/product')->load($item->getProductId());
-                $itemarray["product"]["languageVersions"][$locale] = array(
-                    "name" => $product->getName(),
-                    "message" => 'Ich habe gerade das Produkt "'.$product->getName().'" gekauft.'
+                $itemarray = array(
+                    "quantity" => (int) $item->getQtyOrdered(),
+                    "product" => array(
+                        "id" => $product->getSku(),
+                        "editable" => true,
+                        "languageVersions" => array( ),
+                        "image" => $product->getImageUrl()
+                    )
                 );
 
-            }
+                // Get all Labels from Store views
+                foreach($storeViews as $storeId => $store) {
+                    $locale = substr(Mage::getStoreConfig('general/locale/code', $storeId), 0, 2);
+                    Mage::app()->setCurrentStore($storeId);
 
-            $result['items'][] = $itemarray;
+                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    $itemarray["product"]["languageVersions"][$locale] = array(
+                        "name" => $product->getName(),
+                        "message" => sprintf(Mage::helper('sobuintegration')->__('Ich habe gerade das Produkt "%s" gekauft.'), $product->getName()),
+                    );
+
+                }
+
+                $result['items'][] = $itemarray;
+
+            }
 
         }
 

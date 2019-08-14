@@ -121,13 +121,31 @@
                         </generatekey>
                         <publickey translate="label">
                             <label>Public Key</label>
-                            <comment>Bitte kopieren Sie diesen Link nach der Generierung in Ihr Sobu-Portal</comment>
+                            <comment>Bitte kopieren Sie diesen Link nach der Generierung in Ihr sobu-Portal</comment>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </publickey>
+                        <voucheramount translate="label">
+                            <label>Gutscheinwert (CHF)</label>
+                            <comment>Gutscheinwert für geworbene Kunden</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </voucheramount>
+                        <provision translate="label">
+                            <label>Provision (%)</label>
+                            <comment>In sobu hinterlegte Provision für geworbene Käufe</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </provision>
                         <privatekey translate="label">
                             <label></label>
                             <frontend_type>hidden</frontend_type>

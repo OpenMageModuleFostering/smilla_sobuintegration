@@ -1,0 +1,13 @@
+<div class="col2-set">
+    <div class="col-1">
+        <br>
+        <h2><?php echo sprintf($this->__('Wenn Sie jetzt bestellen, <br />profitieren Sie dank der Empfehlung Ihres Freundes <br />von einem zusätzlichen Rabatt von <strong>%s CHF</strong>.'), Mage::getStoreConfig('sobuintegration/settings/voucheramount')) ?></h2>
+        <p><?php echo $this->__('Dieser Rabatt wird Ihnen am Ende Ihrer Bestellung automatisch vom Totalbetrag abgezogen.') ?></p>
+        <p><a href="<?php echo $this->getUrl('sobu/share/info')?>"><strong><?php echo $this->__('Was ist sobu?') ?></strong></a></p>
+        <br><br>
+        <h3><a class="button" href="<?php echo $this->getUrl('/')?>"><?php echo sprintf($this->__('Jetzt %s CHF Gutschein einlösen'), Mage::getStoreConfig('sobuintegration/settings/voucheramount')) ?></a></h3>
+    </div>
+    <div class="col-2">
+        <img src="<?php echo $this->getSkinUrl('images/sobu/sobu_image_'.Mage::app()->getLocale()->getLocaleCode().'.png') ?>" alt="sobu: buy - share - earn" />
+    </div>
+</div>

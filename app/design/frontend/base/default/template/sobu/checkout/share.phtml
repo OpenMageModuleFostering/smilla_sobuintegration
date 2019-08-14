@@ -6,11 +6,11 @@
     </div>
     <div class="block-content">
         <div>
-            <p class="empty"> <img src="<?php echo $this->getSkinUrl('images/sobu/sobulogo.png') ?>" align="left" /><?php echo $this->__('Publizieren Sie jetzt Ihren Einkauf gratis mit Sobu und ihren sozialen Netzwerken und verdienen Sie Geld mit Freundschaftswerbung.') ?></p>
+            <p class="empty"><img src="<?php echo $this->getSkinUrl('images/sobu/sobulogo_'.Mage::app()->getLocale()->getLocaleCode().'.png') ?>" align="left" /><?php echo sprintf($this->__('Teilen Sie jetzt Ihren Einkauf auf Facebook, Twitter oder LinkedIn und schenken Sie Ihren Freunden einen Gutschein von <b>%s</b>. Als Dankeschön erhalten Sie <b>%s</b> Umsatzprovision auf die Einkäufe Ihrer Freunde!'), Mage::getStoreConfig('sobuintegration/settings/voucheramount'), Mage::getStoreConfig('sobuintegration/settings/provision').'%') ?></p>
             <div class="clearer"></div>
         </div>
         <div class="actions">
-            <button class="button" onclick="setLocation('<?php echo $this->getUrl('sobu/share/order', array('order_id' => Mage::getSingleton('checkout/session')->getLastOrderId()))?>')" title="<?php echo $this->__('Einkauf publizieren!') ?>" type="button"><span><span><?php echo $this->__('Einkauf publizieren!') ?></span></span></button>
+            <button class="button" onclick="setLocation('<?php echo $this->getUrl('sobu/share/order', array('order_id' => Mage::getSingleton('checkout/session')->getLastOrderId()))?>')" title="<?php echo $this->__('Meinen Einkauf empfehlen') ?>" type="button"><span><span><?php echo $this->__('Meinen Einkauf empfehlen') ?></span></span></button>
         </div>
     </div>
 </div>
