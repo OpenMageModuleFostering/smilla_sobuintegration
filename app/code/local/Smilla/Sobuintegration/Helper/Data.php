@@ -33,14 +33,17 @@ class Smilla_Sobuintegration_Helper_Data extends Mage_Core_Helper_Abstract
                 // Get all Labels from Store views
                 foreach($storeViews as $storeId => $store) {
                     $locale = substr(Mage::getStoreConfig('general/locale/code', $storeId), 0, 2);
-                    Mage::app()->setCurrentStore($storeId);
 
-                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
-                    $itemarray["product"]["languageVersions"][$locale] = array(
-                        "name" => $product->getName(),
-                        "message" => sprintf(Mage::helper('sobuintegration')->__('Ich habe gerade das Produkt "%s" gekauft.'), $product->getName()),
-                    );
+                    // Only supported localizations
+                    if(in_array($locale, array('de', 'en', 'fr', 'it'))){
+                        Mage::app()->setCurrentStore($storeId);
 
+                        $product = Mage::getModel('catalog/product')->load($item->getProductId());
+                        $itemarray["product"]["languageVersions"][$locale] = array(
+                            "name" => $product->getName(),
+                            "message" => sprintf(Mage::helper('sobuintegration')->__('Ich habe gerade das Produkt "%s" gekauft.'), $product->getName()),
+                        );
+                    }
                 }
 
                 $result['items'][] = $itemarray;

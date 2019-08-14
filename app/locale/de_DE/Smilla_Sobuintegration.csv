@@ -8,6 +8,8 @@
 "Run in Testmode?","Soll die Anbindung im Testmodus laufen?"
 "Generate Key","Key generieren"
 "Generate RSA Key","RSA Key generieren"
+"Promotion Redirect Target (optional)","Promotion Weiterleitungsziel (optional)"
+"Redirect incoming Sobu Links to this Page. Example: product-123.html","Eingehende Sobu Links auf diese Seite Weiterleiten. Bsp.: produkt-123.html"
 "sobu Benefit Code","sobu Gutschrift Code"
 "sobu Benefit","sobu Gutschrift"
 "sobu Benefit was successfully applied","sobu Gutschrift erfolgreich angewendet"

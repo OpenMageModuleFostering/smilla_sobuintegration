@@ -24,7 +24,11 @@ class Smilla_Sobuintegration_ShareController extends Mage_Core_Controller_Front_
             // Save ClickId to Session
             Mage::getSingleton('core/session')->setSobuClickId($this->getRequest()->getParam('sobuClickId'));
 
-            $this->_redirect('sobu/share/link');
+            if(strlen(Mage::getStoreConfig('sobuintegration/settings/promotion_redirect')) > 0){
+                $this->_redirect(Mage::getStoreConfig('sobuintegration/settings/promotion_redirect'));
+            } else {
+                $this->_redirect('sobu/share/link');
+            }
         } else {
             // Show Info Page
             $this->loadLayout();
