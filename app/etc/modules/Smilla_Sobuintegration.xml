@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <Smilla_Sobuintegration>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Smilla_Sobuintegration>
+    </modules>
+</config>

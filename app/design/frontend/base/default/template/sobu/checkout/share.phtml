@@ -1,0 +1,16 @@
+<br>
+<br>
+<div class="block block-sobu">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Mit sobu publizieren und profitieren') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <div>
+            <p class="empty"> <img src="<?php echo $this->getSkinUrl('images/sobu/sobulogo.png') ?>" align="left" /><?php echo $this->__('Publizieren Sie jetzt Ihren Einkauf gratis mit Sobu und ihren sozialen Netzwerken und verdienen Sie Geld mit Freundschaftswerbung.') ?></p>
+            <div class="clearer"></div>
+        </div>
+        <div class="actions">
+            <button class="button" onclick="setLocation('<?php echo $this->getUrl('sobu/share/order', array('order_id' => Mage::getSingleton('checkout/session')->getLastOrderId()))?>')" title="<?php echo $this->__('Einkauf publizieren!') ?>" type="button"><span><span><?php echo $this->__('Einkauf publizieren!') ?></span></span></button>
+        </div>
+    </div>
+</div>

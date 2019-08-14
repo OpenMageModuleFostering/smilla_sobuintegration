@@ -1,0 +1,136 @@
+<?xml version = "1.0"?>
+<config>
+    <modules>
+        <Smilla_Sobuintegration>
+            <version>0.1.0</version>
+        </Smilla_Sobuintegration>
+    </modules>
+
+
+    <admin>
+        <routers>
+            <sobuadmin>
+                <use>admin</use>
+                <args>
+                    <module>Smilla_Sobuintegration</module>
+                    <frontName>sobuadmin</frontName>
+                </args>
+            </sobuadmin>
+
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <sobu>
+                <use>standard</use>
+                <args>
+                    <module>Smilla_Sobuintegration</module>
+                    <frontName>sobu</frontName>
+                </args>
+            </sobu>
+        </routers>
+
+        <layout>
+            <updates>
+                <sobu>
+                    <file>sobuintegration.xml</file>
+                </sobu>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <sobuintegration>
+                    <files>
+                        <default>Smilla_Sobuintegration.csv</default>
+                    </files>
+                </sobuintegration>
+            </modules>
+        </translate>
+    </frontend>
+    <global>
+        <blocks>
+            <sobuintegration>
+                <class>Smilla_Sobuintegration_Block</class>
+            </sobuintegration>
+            <sobuintegration_adminhtml>
+                <class>Smilla_Sobuintegration_Block_Adminhtml</class>
+            </sobuintegration_adminhtml>
+        </blocks>
+        <models>
+            <sobuintegration>
+                <class>Smilla_Sobuintegration_Model</class>
+            </sobuintegration>
+        </models>
+        <helpers>
+            <sobuintegration>
+                <class>Smilla_Sobuintegration_Helper</class>
+            </sobuintegration>
+        </helpers>
+        <events>
+            <salesrule_rule_condition_combine>
+                <observers>
+                    <add_condition_to_sales_rule>
+                        <class>Smilla_Sobuintegration_Model_Observer</class>
+                        <method>addConditionToSalesRule</method>
+                    </add_condition_to_sales_rule>
+                </observers>
+            </salesrule_rule_condition_combine>
+            <sales_order_place_after>
+                <observers>
+                    <sobu_register_sale>
+                        <class>Smilla_Sobuintegration_Model_Observer</class>
+                        <method>registerSobuSale</method>
+                    </sobu_register_sale>
+                </observers>
+            </sales_order_place_after>
+        </events>
+    </global>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <sobuintegration>
+                            <title>sobu.ch Integration</title>
+                        </sobuintegration>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <sobuintegration>
+                                            <title>sobu.ch Integration Settings</title>
+                                        </sobuintegration>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <sobuintegration>
+                    <files>
+                        <default>Smilla_Sobuintegration.csv</default>
+                    </files>
+                </sobuintegration>
+            </modules>
+        </translate>
+    </adminhtml>
+
+
+    <default>
+        <sobuintegration>
+            <settings>
+                <testmode>1</testmode>
+            </settings>
+        </sobuintegration>
+    </default>
+
+</config>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <sobu_share_order>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="sobuintegration/share" name="sobu_share_order" template="sobu/order/share.phtml"></block>
+        </reference>
+    </sobu_share_order>
+
+    <!-- Order View -->
+    <sales_order_view>
+        <reference name="my.account.wrapper">
+            <block type="sales/order_view" name="sobu_share" after="sales.order.view" template="sobu/sales/order/share.phtml" />
+        </reference>
+    </sales_order_view>
+
+
+    <!-- Multi Checkout Success Page -->
+    <checkout_multishipping_success translate="label">
+        <reference name="content">
+            <block type="checkout/multishipping_success" after="checkout_success" name="sobu_share"
+                   template="sobu/checkout/share.phtml"/>
+        </reference>
+    </checkout_multishipping_success>
+
+    <!-- Checkout Success Page -->
+    <checkout_onepage_success translate="label">
+        <reference name="content">
+            <block type="checkout/onepage_success" after="checkout.success" name="sobu_share"
+                   template="sobu/checkout/share.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+
+
+    <!-- E-Mail -->
+    <sales_email_order_items>
+        <reference name="items">
+            <reference name="order_totals" template="sobu/sales/order/totals.phtml">
+                <action method="setTemplate">
+                    <template>sobu/sales/order/totals.phtml</template>
+                </action>
+            </reference>
+        </reference>
+    </sales_email_order_items>
+</layout>

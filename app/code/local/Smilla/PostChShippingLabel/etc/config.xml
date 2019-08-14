@@ -1,0 +1,86 @@
+<?xml version = "1.0"?>
+<config>
+    <modules>
+        <Smilla_PostChShippingLabel>
+            <version>0.1.0</version>
+        </Smilla_PostChShippingLabel>
+    </modules>
+    <global>
+        <models>
+            <postchshippinglabel>
+                <class>Smilla_PostChShippingLabel_Model</class>
+            </postchshippinglabel>
+        </models>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_grid>Smilla_PostChShippingLabel_Block_Sales_Order_Grid</sales_order_grid>
+                </rewrite>
+                <rewrite>
+                    <sales_order_view>Smilla_PostChShippingLabel_Block_View_Postchshippinglabel</sales_order_view>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <postchshippinglabel>
+                <class>Smilla_PostChShippingLabel_Helper</class>
+            </postchshippinglabel>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <smilla_postchshippinglabel>
+                <use>admin</use>
+                <args>
+                    <module>Smilla_PostChShippingLabel</module>
+                    <frontName>smillaadmin</frontName>
+                </args>
+            </smilla_postchshippinglabel>
+            
+        </routers>
+    </admin>
+
+
+    <adminhtml>
+        <acl>
+            <resources>
+                    <all>
+            <title>Allow Everything</title>
+        </all>
+                <admin>
+                    <children>
+		                <smilla_postchshippinglabel>
+		                    <title>Post.CH Shippinglabel 1</title>
+		                </smilla_postchshippinglabel>
+		                <Smilla_PostChShippingLabel>
+		                    <title>Post.CH Shippinglabel 2</title>
+		                </Smilla_PostChShippingLabel>
+		                <smillaadmin>
+		                    <title>Post.CH Shippinglabel 2</title>
+		                </smillaadmin>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <postchshippinglabel>
+                                            <title>Post.CH Shippinglabel Settings</title>
+                                        </postchshippinglabel>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+
+    <default>
+        <postchshippinglabel>
+            <settings>
+                <endpointurl>https://int.mypostbusiness.ch/wsbc/barcode/v2_1</endpointurl>
+            </settings>
+        </postchshippinglabel>
+    </default>
+</config>

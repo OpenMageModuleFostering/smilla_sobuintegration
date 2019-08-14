@@ -1,0 +1,18 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Sie werden nun zur Sobu Plattform weitergeleitet...') ?></h1>
+</div>
+<p>
+    <?php echo $this->__('Wenn diese Seite länger als fünf Sekunden angezeigt wird,') ?> <a href="javascript:document.forms.publish.submit();"><?php echo $this->__('hier klicken') ?></a>.
+</p>
+
+<form name="publish" method="POST" action="https://www.sobu.ch/publish">
+    <input type="hidden" name="apiKey" value="<?=$this->getApiKey() ?>"/>
+    <input type="hidden" name="order" value='<?=$orderdata = $this->getOrderData() ?>'/>
+    <input type="hidden" name="signature" value="<?=$this->getSignatureData($orderdata) ?>"/>
+</form>
+
+<script type="text/javascript">
+    window.onload = function () {
+        document.forms.publish.submit();
+    }
+</script>
