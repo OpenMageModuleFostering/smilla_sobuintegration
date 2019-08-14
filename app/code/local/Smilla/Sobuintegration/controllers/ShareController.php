@@ -5,19 +5,8 @@ class Smilla_Sobuintegration_ShareController extends Mage_Core_Controller_Front_
     public function orderAction()
     {
 
-        $loginUrl = Mage::helper('customer')->getLoginUrl();
-        if (!Mage::getSingleton('customer/session')->authenticate($this, $loginUrl)) {
-            $this->setFlag('', self::FLAG_NO_DISPATCH, true);
-        }
-
         $this->loadLayout();
         $this->order = Mage::getModel('sales/order')->load($this->getRequest()->getParam('order_id'));
-
-        if (!$this->_canViewOrder($this->order)) {
-            // Not authorized for this order
-            $this->_redirect('customer/account');
-        }
-
 
         $this->renderLayout();
 
@@ -26,16 +15,27 @@ class Smilla_Sobuintegration_ShareController extends Mage_Core_Controller_Front_
     public function linkAction()
     {
         $voucherCode = trim($this->getRequest()->getParam('code'));
+        $clickId = $this->getRequest()->getParam('sobuClickId');
         $this->session = Mage::getSingleton('checkout/session');
 
         if(strlen($voucherCode) > 0) {
-
             // Save Vouchercode to Session
             Mage::getSingleton('core/session')->setSobuVoucherCode($voucherCode);
-            // Save ClickId to Session
-            Mage::getSingleton('core/session')->setSobuClickId($this->getRequest()->getParam('sobuClickId'));
+        }
 
-            $this->_redirect('sobu/share/link');
+        if(strlen($clickId) > 0) {
+            // Save ClickId to Session
+            Mage::getSingleton('core/session')->setSobuClickId($clickId);
+        } 
+
+        if(strlen($voucherCode) > 0 || strlen($clickId) > 0) {
+            if(strlen($this->getRequest()->getParam('redirect')) > 0){
+                $this->_redirect($this->getRequest()->getParam('redirect'));
+            } elseif (strlen(Mage::getStoreConfig('sobuintegration/settings/promotion_redirect')) > 0){
+                $this->_redirect(Mage::getStoreConfig('sobuintegration/settings/promotion_redirect'));
+            } else {
+                $this->_redirect('sobu/share/link');
+            } 
         } else {
             // Show Info Page
             $this->loadLayout();
