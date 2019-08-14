@@ -129,8 +129,8 @@
                             <show_in_store>1</show_in_store>
                         </publickey>
                         <voucheramount translate="label">
-                            <label>Gutscheinwert (CHF)</label>
-                            <comment>Gutscheinwert für geworbene Kunden</comment>
+                            <label>Gutscheinwert</label>
+                            <comment>Gutscheinwert für geworbene Kunden (Bsp.: 5% oder 5 CHF)</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>100</sort_order>
                             <show_in_default>1</show_in_default>
