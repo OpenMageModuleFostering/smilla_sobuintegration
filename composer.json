@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Smilla_Sobuintegration",
+    "name": "OpenMageModuleFostering\/Smilla_Sobuintegration",
     "type": "magento-module",
     "license": "GNU-General-Public-License-(GPL)",
     "homepage": "",
-    "description": "Integrieren Sie Ihren Shop in das sobu Netzwerk. Käufe Teilen, Sobu Rabatte uvm. ",
+    "description": "Integrieren Sie Ihren Shop in das sobu Netzwerk. K\u00e4ufe Teilen, Sobu Rabatte uvm. ",
     "authors": [
-    {
-        "name": "smilla AG",
-        "email": "hendrik.unkenholz@smilla.com"
-    }
-],
+        {
+            "name": "smilla AG",
+            "email": "hendrik.unkenholz@smilla.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
